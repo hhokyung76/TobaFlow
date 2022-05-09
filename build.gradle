@@ -1,0 +1,68 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.6'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.6.6'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-tomcat'
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools:2.6.6'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.6'
+
+    implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4:1.16'
+    compile group: 'com.h2database', name: 'h2', version: '1.4.200'
+    implementation 'mysql:mysql-connector-java:8.0.29'
+
+    implementation 'org.apache.ignite:ignite-core:2.12.0'
+
+    //AWS dependencies
+    implementation group: 'software.amazon.awssdk', name: 'dynamodb', version: '2.17.165'
+    implementation group: 'software.amazon.awssdk', name: 'dynamodb-enhanced', version: '2.17.165'
+    implementation group: 'software.amazon.awssdk', name: 'kms', version: '2.17.165'
+
+
+    compile group: 'com.github.ua-parser', name: 'uap-java', version: '1.5.2'
+
+    //jsp
+    implementation('javax.servlet:jstl')
+    implementation("org.apache.tomcat.embed:tomcat-embed-jasper")
+
+    compile('org.projectlombok:lombok')
+    compileOnly('org.projectlombok:lombok')
+    annotationProcessor('org.projectlombok:lombok')
+    testAnnotationProcessor('org.projectlombok:lombok')
+    testCompile('org.projectlombok:lombok')
+    testImplementation('org.projectlombok:lombok')
+
+    implementation 'org.quartz-scheduler:quartz:2.3.2'
+    implementation 'com.jcraft:jsch:0.1.55'
+
+    implementation 'commons-codec:commons-codec:1.15'
+
+
+
+
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

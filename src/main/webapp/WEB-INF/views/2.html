@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notification Test Page</title>
+</head>
+<body>
+<input type="text" id="id"/>
+<button type="button" onclick="login()">로그인</button>
+</body>
+</html>
+<script type="text/javaScript">
+    function login() {
+        var logined = false;
+        const id = document.getElementById('id').value;
+        const eventSource = new EventSource(`/users`);
+        // eventSource.onmessage = event => {
+        //     const data = JSON.parse(event.data);
+        //     console.log(data.message);
+        // };
+        // eventSource.onerror = error => {
+        //     eventSource.close();
+        // };
+
+        eventSource.addEventListener('message', function(e) {
+            console.log(e.data);
+        }, false);
+
+        eventSource.addEventListener('open', function(e) {
+            if (logined) {
+                eventSource.close();
+            }
+            logined = true;
+            // Connection was opened.
+            console.log("Event Stream Connection Opened...");
+        }, false);
+
+        eventSource.addEventListener('error', function(e) {
+            if (e.readyState == EventSource.CLOSED) {
+                // Connection was closed.
+                console.log("error... invoked closed..")
+                eventSource.close();
+            }
+        }, false);
+
+
+    }
+</script>
