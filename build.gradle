@@ -54,8 +54,16 @@ dependencies {
 
     implementation 'org.quartz-scheduler:quartz:2.3.2'
     implementation 'com.jcraft:jsch:0.1.55'
+    implementation 'net.bytebuddy:byte-buddy-agent:1.12.10'
 
     implementation 'commons-codec:commons-codec:1.15'
+
+
+    implementation 'net.sf.dozer:dozer:5.5.1'
+
+    implementation 'com.google.guava:guava:31.1-jre'
+    implementation 'commons-io:commons-io:2.11.0'
+
 
 
 

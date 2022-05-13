@@ -1,7 +1,6 @@
 package com.toba.app;
 
-import com.toba.tobaflow.test.*;
-import com.toba.tobaflow.test.*;
+import com.toba.tobaflow.test.job.*;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
 import org.springframework.stereotype.Component;
